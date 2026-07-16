@@ -26,7 +26,7 @@ export default function ShopPage() {
   }, [products, search, brand, sort]);
 
   return (
-    <main className="px-8 md:px-12 py-16 max-w-7xl mx-auto">
+    <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 md:py-10 lg:px-8">
       <h1 className="text-5xl font-black">Shop Sneakers</h1>
       <p className="text-gray-600 mt-3 mb-8">Search, filter and sort your sneaker collection.</p>
 
@@ -42,7 +42,7 @@ export default function ShopPage() {
         </select>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
+      <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
         {filtered.map((product) => <ProductCard key={product.id} product={product} />)}
       </div>
     </main>
