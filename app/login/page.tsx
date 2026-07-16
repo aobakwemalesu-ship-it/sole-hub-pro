@@ -21,7 +21,7 @@ export default function LoginPage() {
 if (loggedInUser.role === "admin") {
   router.push("/admin");
 } else {
-  router.push("/shop");
+  router.push("/");
 }
     } catch (error) {
       setError(error instanceof Error ? error.message : "Login failed");
