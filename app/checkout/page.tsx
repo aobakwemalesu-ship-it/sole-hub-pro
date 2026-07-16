@@ -17,7 +17,7 @@ useEffect(() => {
     email: user?.email || "",
     phone: "",
     address: "",
-    paymentMethod: "Cash on Delivery"
+    paymentMethod: "Absa Bank Transfer",
   });
 
   async function submit(e: FormEvent) {
