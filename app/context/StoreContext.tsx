@@ -488,7 +488,7 @@ function isWishlisted(productId: string) {
     ...data,
     items: cart,
     total: cartTotal,
-    status: "Pending",
+    status: "Awaiting Payment",
     createdAt: new Date().toISOString(),
   };
 

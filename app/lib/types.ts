@@ -31,7 +31,8 @@ export type Order = {
   items: CartItem[];
   total: number;
   status:
-  | "Pending"
+  | "Awaiting Payment"
+  | "Paid"
   | "Confirmed"
   | "Shipped"
   | "Delivered"

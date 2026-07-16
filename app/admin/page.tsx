@@ -40,8 +40,8 @@ export default function AdminPage() {
   const [tab, setTab] = useState<"products" | "orders">("products");
   const totalSales = orders.reduce((sum, order) => sum + order.total, 0);
 
-const pendingOrders = orders.filter(
-  (order) => order.status === "Pending"
+const awaitingPaymentOrders = orders.filter(
+  (order) => order.status === "Awaiting Payment"
 ).length;
   const [form, setForm] = useState({
     name: "",
@@ -144,8 +144,8 @@ if (editingId) {
   </div>
 
   <div className="bg-white rounded-2xl p-5 shadow-sm border">
-    <p className="text-gray-500 text-sm">Pending Orders</p>
-    <p className="text-3xl font-black mt-2">{pendingOrders}</p>
+    <p className="text-gray-500 text-sm">Awaiting Payment</p>
+    <p className="text-3xl font-black mt-2">{awaitingPaymentOrders}</p>
   </div>
 
   <div className="bg-white rounded-2xl p-5 shadow-sm border">
@@ -330,11 +330,12 @@ if (editingId) {
   }}
   className="border px-4 py-3 rounded-2xl font-bold bg-white"
 >
-  <option value="Pending">Pending</option>
-  <option value="Confirmed">Confirmed</option>
-  <option value="Shipped">Shipped</option>
-  <option value="Delivered">Delivered</option>
-  <option value="Cancelled">Cancelled</option>
+  <option value="Awaiting Payment">Awaiting Payment</option>
+<option value="Paid">Paid</option>
+<option value="Confirmed">Confirmed</option>
+<option value="Shipped">Shipped</option>
+<option value="Delivered">Delivered</option>
+<option value="Cancelled">Cancelled</option>
 </select>
 </div>
 
