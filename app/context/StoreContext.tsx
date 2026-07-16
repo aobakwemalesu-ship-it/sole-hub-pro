@@ -48,6 +48,11 @@ deleteProduct: (id: string) => Promise<void>;
   id: string,
   status: Order["status"]
 ) => Promise<void>;
+
+updatePaymentProofReceived: (
+  id: string,
+  received: boolean
+) => Promise<void>;
   resetDemo: () => void;
 };
 
@@ -551,6 +556,36 @@ function isWishlisted(productId: string) {
     )
   );
 }
+
+async function updatePaymentProofReceived(
+  id: string,
+  received: boolean
+) {
+  const { error } = await supabase
+    .from("orders")
+    .update({
+      payment_proof_received: received,
+    })
+    .eq("id", id);
+
+  if (error) {
+    throw new Error(
+      `Could not update payment proof: ${error.message}`
+    );
+  }
+
+  setOrders((currentOrders) =>
+    currentOrders.map((order) =>
+      order.id === id
+        ? {
+            ...order,
+            paymentProofReceived: received,
+          }
+        : order
+    )
+  );
+}
+
   function resetDemo() {
     setProducts([]);
     setWishlist([]);
@@ -585,6 +620,7 @@ function isWishlisted(productId: string) {
     clearCart,
     placeOrder,
     updateOrderStatus,
+    updatePaymentProofReceived,
     resetDemo,
   }}
 >

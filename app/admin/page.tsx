@@ -36,6 +36,7 @@ export default function AdminPage() {
   updateProduct,
   deleteProduct,
   updateOrderStatus,
+  updatePaymentProofReceived,
 } = useStore();
   const [tab, setTab] = useState<"products" | "orders">("products");
   const totalSales = orders.reduce((sum, order) => sum + order.total, 0);
@@ -314,6 +315,30 @@ if (editingId) {
               <span className="font-bold text-black">Payment:</span>{" "}
               {order.paymentMethod}
             </p>
+
+<label className="mt-4 flex items-center gap-3 font-bold">
+  <input
+    type="checkbox"
+    checked={order.paymentProofReceived}
+    onChange={async (e) => {
+      try {
+        await updatePaymentProofReceived(
+          order.id,
+          e.target.checked
+        );
+      } catch (error) {
+        alert(
+          error instanceof Error
+            ? error.message
+            : "Could not update payment proof."
+        );
+      }
+    }}
+    className="h-5 w-5"
+  />
+
+  Payment proof received
+</label>
 
             <p className="font-bold text-blue-600 mt-3">
               P{order.total.toLocaleString()}
