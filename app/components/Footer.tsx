@@ -39,6 +39,13 @@ export default function Footer() {
 >
   Delivery Information
 </a>
+
+<a
+  href="/returns"
+  className="block text-gray-400 hover:text-white"
+>
+  Returns and Refunds
+</a>
             </div>
           </div>
         </div>
