@@ -1,0 +1,2 @@
+Add hero-shoe.png, shoe1.png, shoe2.png, shoe3.png, shoe4.png here.
+You can also upload images through the admin dashboard.

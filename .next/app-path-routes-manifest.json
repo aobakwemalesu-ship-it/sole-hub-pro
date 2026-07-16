@@ -1,0 +1,18 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/admin/page": "/admin",
+  "/cart/page": "/cart",
+  "/checkout/page": "/checkout",
+  "/contact/page": "/contact",
+  "/login/page": "/login",
+  "/order-success/page": "/order-success",
+  "/orders/[id]/page": "/orders/[id]",
+  "/orders/page": "/orders",
+  "/page": "/",
+  "/product/[id]/page": "/product/[id]",
+  "/shop/page": "/shop",
+  "/signup/page": "/signup",
+  "/wishlist/page": "/wishlist"
+}
