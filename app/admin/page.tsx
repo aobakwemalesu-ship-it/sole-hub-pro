@@ -340,6 +340,18 @@ if (editingId) {
   Payment proof received
 </label>
 
+<div
+  className={`mt-3 inline-flex rounded-full px-3 py-1 text-sm font-bold ${
+    order.paymentProofReceived
+      ? "bg-green-100 text-green-700"
+      : "bg-yellow-100 text-yellow-700"
+  }`}
+>
+  {order.paymentProofReceived
+    ? "Payment proof received"
+    : "Waiting for payment proof"}
+</div>
+
             <p className="font-bold text-blue-600 mt-3">
               P{order.total.toLocaleString()}
             </p>
