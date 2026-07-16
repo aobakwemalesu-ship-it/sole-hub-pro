@@ -104,6 +104,26 @@ export default function OrderDetailsPage() {
 >
   {order.status}
 </span>
+
+<div className="mt-5 rounded-2xl border border-gray-200 bg-gray-50 p-5">
+  <h2 className="font-black">
+    Order update
+  </h2>
+
+  <p className="mt-2 text-sm leading-6 text-gray-600">
+    {order.status === "Awaiting Payment"
+      ? "Your order has been received, but payment has not yet been confirmed. Send your proof of payment to Sole Hub on WhatsApp."
+      : order.status === "Paid"
+      ? "Your payment has been received. Sole Hub will now confirm and begin processing your order."
+      : order.status === "Confirmed"
+      ? "Your order has been confirmed and is being prepared for shipment from China."
+      : order.status === "Shipped"
+      ? "Your order has been shipped and is on its way to Botswana."
+      : order.status === "Delivered"
+      ? "Your order has been delivered successfully. Thank you for shopping with Sole Hub."
+      : "This order has been cancelled. Contact Sole Hub if you need more information."}
+  </p>
+</div>
         </div>
 
         <section className="py-7 border-b">
