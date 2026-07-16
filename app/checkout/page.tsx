@@ -55,6 +55,18 @@ if (!storeLoaded || !user) {
     <main className="px-8 md:px-12 py-20 max-w-5xl mx-auto">
       <h1 className="text-5xl font-black mb-8">Checkout</h1>
 
+      <div className="mb-6 rounded-2xl border border-blue-200 bg-blue-50 p-5">
+  <h2 className="font-black text-blue-900">
+    Delivery estimate
+  </h2>
+
+  <p className="mt-2 text-sm leading-6 text-blue-800">
+    Products are sourced from China and normally take approximately
+    10–12 business days to arrive in Botswana after payment and order
+    confirmation.
+  </p>
+</div>
+
       <form onSubmit={submit} className="grid lg:grid-cols-[1fr_320px] gap-8">
         <div className="card p-8 space-y-5">
           <input required className="w-full border p-4 rounded-2xl" placeholder="Full name" value={form.customerName} onChange={(e) => setForm({ ...form, customerName: e.target.value })} />
