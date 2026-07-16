@@ -64,17 +64,6 @@ export default function OrderDetailsPage() {
     );
   }
 
-  const statusClasses =
-    order.status === "Delivered"
-      ? "bg-green-100 text-green-700"
-      : order.status === "Shipped"
-      ? "bg-blue-100 text-blue-700"
-      : order.status === "Confirmed"
-      ? "bg-purple-100 text-purple-700"
-      : order.status === "Cancelled"
-      ? "bg-red-100 text-red-700"
-      : "bg-yellow-100 text-yellow-700";
-
   return (
     <main className="px-6 md:px-12 py-16 max-w-5xl mx-auto">
       <Link
@@ -99,10 +88,22 @@ export default function OrderDetailsPage() {
           </div>
 
           <span
-            className={`self-start px-4 py-2 rounded-full text-sm font-bold ${statusClasses}`}
-          >
-            {order.status}
-          </span>
+  className={`self-start px-4 py-2 rounded-full text-sm font-bold ${
+    order.status === "Delivered"
+      ? "bg-green-100 text-green-700"
+      : order.status === "Shipped"
+      ? "bg-blue-100 text-blue-700"
+      : order.status === "Confirmed"
+      ? "bg-purple-100 text-purple-700"
+      : order.status === "Paid"
+      ? "bg-emerald-100 text-emerald-700"
+      : order.status === "Cancelled"
+      ? "bg-red-100 text-red-700"
+      : "bg-yellow-100 text-yellow-700"
+  }`}
+>
+  {order.status}
+</span>
         </div>
 
         <section className="py-7 border-b">

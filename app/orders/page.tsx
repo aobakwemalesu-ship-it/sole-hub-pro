@@ -91,16 +91,18 @@ export default function OrdersPage() {
 
                 <span
                   className={`self-start px-4 py-2 rounded-full text-sm font-bold ${
-                    order.status === "Delivered"
-                      ? "bg-green-100 text-green-700"
-                      : order.status === "Shipped"
-                      ? "bg-blue-100 text-blue-700"
-                      : order.status === "Confirmed"
-                      ? "bg-purple-100 text-purple-700"
-                      : order.status === "Cancelled"
-                      ? "bg-red-100 text-red-700"
-                      : "bg-yellow-100 text-yellow-700"
-                  }`}
+  order.status === "Delivered"
+    ? "bg-green-100 text-green-700"
+    : order.status === "Shipped"
+    ? "bg-blue-100 text-blue-700"
+    : order.status === "Confirmed"
+    ? "bg-purple-100 text-purple-700"
+    : order.status === "Paid"
+    ? "bg-emerald-100 text-emerald-700"
+    : order.status === "Cancelled"
+    ? "bg-red-100 text-red-700"
+    : "bg-yellow-100 text-yellow-700"
+}`}
                 >
                   {order.status}
                 </span>
@@ -166,7 +168,7 @@ export default function OrdersPage() {
                     P{order.total.toLocaleString()}
                   </p>
                 </div>
-                
+
                 <Link
   href={`/orders/${order.id}`}
   className="inline-block mt-5 bg-black text-white px-5 py-3 rounded-xl font-bold"
