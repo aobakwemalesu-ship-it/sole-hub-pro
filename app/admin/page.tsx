@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { useStore } from "../context/StoreContext";
 import { supabase } from "../lib/supabase";
+import type { Order } from "../lib/types";
 
 async function uploadProductImage(file: File): Promise<string> {
   const extension = file.name.split(".").pop() ?? "jpg";
@@ -39,11 +40,22 @@ export default function AdminPage() {
   updatePaymentProofReceived,
 } = useStore();
   const [tab, setTab] = useState<"products" | "orders">("products");
+  const [orderFilter, setOrderFilter] = useState<
+  "All" | Order["status"]
+>("All");
   const totalSales = orders.reduce((sum, order) => sum + order.total, 0);
 
 const awaitingPaymentOrders = orders.filter(
   (order) => order.status === "Awaiting Payment"
 ).length;
+
+const filteredOrders =
+  orderFilter === "All"
+    ? orders
+    : orders.filter(
+        (order) => order.status === orderFilter
+      );
+
   const [form, setForm] = useState({
     name: "",
     brand: "",
@@ -281,16 +293,35 @@ if (editingId) {
         </div>
       ) : (
         <div>
-  <h2 className="text-2xl font-black mb-5">
-    Orders ({orders.length})
+
+    <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+  <h2 className="text-2xl font-black">
+    Orders ({filteredOrders.length})
   </h2>
 
+  <select
+    value={orderFilter}
+    onChange={(e) =>
+      setOrderFilter(e.target.value as "All" | Order["status"])
+    }
+    className="rounded-xl border border-gray-300 bg-white px-4 py-3 font-bold"
+  >
+    <option value="All">All Orders</option>
+    <option value="Awaiting Payment">Awaiting Payment</option>
+    <option value="Paid">Paid</option>
+    <option value="Confirmed">Confirmed</option>
+    <option value="Shipped">Shipped</option>
+    <option value="Delivered">Delivered</option>
+    <option value="Cancelled">Cancelled</option>
+  </select>
+</div>
+
   <div className="space-y-5">
-    {orders.length === 0 && (
+    {filteredOrders.length === 0 && (
       <div className="card p-8">No orders yet.</div>
     )}
 
-    {orders.map((order) => (
+    {filteredOrders.map((order) => (
       <div key={order.id} className="card p-6">
         <div className="flex flex-col md:flex-row justify-between gap-4">
           <div>
