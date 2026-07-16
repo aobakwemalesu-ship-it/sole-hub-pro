@@ -96,11 +96,11 @@ const [showLoginPopup, setShowLoginPopup] = useState(false);
       )}
 
       <Link href={`/product/${product.id}`}>
-        <div className="h-60 bg-gray-50 rounded-3xl flex items-center justify-center overflow-hidden">
+        <div className="bg-white rounded-2xl overflow-hidden">
           <img
             src={product.images[0]}
             alt={product.name}
-            className="max-h-48 object-contain group-hover:scale-110 transition duration-300"
+            className="w-full h-64 object-contain"
           />
         </div>
       </Link>
