@@ -74,10 +74,21 @@ if (!storeLoaded || !user) {
           <input required className="w-full border p-4 rounded-2xl" placeholder="Phone" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
           <textarea required className="w-full border p-4 rounded-2xl" placeholder="Delivery address" value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })} />
           <select className="w-full border p-4 rounded-2xl" value={form.paymentMethod} onChange={(e) => setForm({ ...form, paymentMethod: e.target.value })}>
-            <option>Cash on Delivery</option>
-            <option>Bank Transfer</option>
-            <option>Orange Money</option>
-            <option>Card Payment Demo</option>
+            <option value="Absa Bank Transfer">
+  Absa Bank Transfer
+</option>
+
+<option value="FNB Bank Transfer">
+  FNB Bank Transfer
+</option>
+
+<option value="Orange Money">
+  Orange Money
+</option>
+
+<option value="MyZaka">
+  MyZaka
+</option>
           </select>
         </div>
 
