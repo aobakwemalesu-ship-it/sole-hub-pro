@@ -34,7 +34,15 @@ deleteProduct: (id: string) => Promise<void>;
   removeFromCart: (productId: string, size: string, color: string) => void;
   clearCart: () => void;
   placeOrder: (
-  data: Omit<Order, "id" | "items" | "total" | "status" | "createdAt">
+  data: Omit<
+    Order,
+    | "id"
+    | "items"
+    | "total"
+    | "status"
+    | "createdAt"
+    | "paymentProofReceived"
+  >
 ) => Promise<string>;
   updateOrderStatus: (
   id: string,
@@ -85,6 +93,7 @@ if (orderError) {
     phone: order.phone,
     address: order.address,
     paymentMethod: order.payment_method,
+    paymentProofReceived: order.payment_proof_received ?? false,
     items: order.items ?? [],
     total: Number(order.total),
     status: order.status,
@@ -251,6 +260,7 @@ if (orderError) {
     phone: order.phone,
     address: order.address,
     paymentMethod: order.payment_method,
+    paymentProofReceived: order.payment_proof_received ?? false,
     items: order.items ?? [],
     total: Number(order.total),
     status: order.status,
@@ -486,6 +496,7 @@ function isWishlisted(productId: string) {
   const order: Order = {
     id,
     ...data,
+    paymentProofReceived: false,
     items: cart,
     total: cartTotal,
     status: "Awaiting Payment",
@@ -502,6 +513,7 @@ function isWishlisted(productId: string) {
       phone: order.phone,
       address: order.address,
       payment_method: data.paymentMethod,
+      payment_proof_received: false,
       items: order.items,
       total: order.total,
       status: order.status,

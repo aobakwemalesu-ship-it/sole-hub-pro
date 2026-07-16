@@ -28,6 +28,7 @@ export type Order = {
   phone: string;
   address: string;
   paymentMethod: string;
+  paymentProofReceived: boolean;
   items: CartItem[];
   total: number;
   status:
