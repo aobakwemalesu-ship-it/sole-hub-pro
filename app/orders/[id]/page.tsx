@@ -42,6 +42,7 @@ export default function OrderDetailsPage() {
   );
 
   if (!order) {
+    
     return (
       <main className="px-8 md:px-12 py-20 max-w-3xl mx-auto">
         <div className="card p-10 text-center">
@@ -63,6 +64,15 @@ export default function OrderDetailsPage() {
       </main>
     );
   }
+
+  const whatsappNumber = "26775489442";
+
+const whatsappMessage = encodeURIComponent(
+  `Hello Sole Hub, I need help with order ${order.id}. My selected payment method is ${order.paymentMethod}.`
+);
+
+const whatsappLink =
+  `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
     <main className="px-6 md:px-12 py-16 max-w-5xl mx-auto">
@@ -124,6 +134,17 @@ export default function OrderDetailsPage() {
       : "This order has been cancelled. Contact Sole Hub if you need more information."}
   </p>
 </div>
+
+{order.status === "Awaiting Payment" && (
+  <a
+    href={whatsappLink}
+    target="_blank"
+    rel="noreferrer"
+    className="mt-5 block w-full rounded-2xl bg-green-600 px-6 py-4 text-center font-bold text-white hover:bg-green-700"
+  >
+    Send Payment Details on WhatsApp
+  </a>
+)}
         </div>
 
         <section className="py-7 border-b">
