@@ -348,11 +348,28 @@ if (editingId) {
    <select
   value={order.status}
   onChange={async (e) => {
-    await updateOrderStatus(
-      order.id,
-      e.target.value as typeof order.status
+  const newStatus = e.target.value as typeof order.status;
+
+  if (
+    newStatus === "Paid" &&
+    !order.paymentProofReceived
+  ) {
+    alert(
+      "Tick Payment proof received before marking this order as Paid."
     );
-  }}
+    return;
+  }
+
+  try {
+    await updateOrderStatus(order.id, newStatus);
+  } catch (error) {
+    alert(
+      error instanceof Error
+        ? error.message
+        : "Could not update order status."
+    );
+  }
+}}
   className="border px-4 py-3 rounded-2xl font-bold bg-white"
 >
   <option value="Awaiting Payment">Awaiting Payment</option>
