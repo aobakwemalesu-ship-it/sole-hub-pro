@@ -157,6 +157,17 @@ export default function OrdersPage() {
                     <strong>Payment:</strong>{" "}
                     {order.paymentMethod}
                   </p>
+                  <div
+  className={`mt-3 inline-flex rounded-full px-3 py-1 text-sm font-bold ${
+    order.paymentProofReceived
+      ? "bg-green-100 text-green-700"
+      : "bg-yellow-100 text-yellow-700"
+  }`}
+>
+  {order.paymentProofReceived
+    ? "Payment proof received"
+    : "Payment proof not confirmed"}
+</div>
                 </div>
 
                 <div className="md:text-right">
