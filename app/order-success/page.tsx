@@ -9,6 +9,13 @@ function OrderSuccessContent() {
   const orderId = searchParams.get("orderId");
   const paymentMethod =
   searchParams.get("paymentMethod") || "Payment method not selected";
+  const whatsappNumber = "26775489442";
+
+const whatsappMessage = encodeURIComponent(
+  `Hello Sole Hub, I want to make payment for order ${orderId}. My selected payment method is ${paymentMethod}.`
+);
+
+const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
     <main className="min-h-screen bg-gray-50 px-6 py-16">
@@ -53,21 +60,30 @@ function OrderSuccessContent() {
   </p>
 </div>
 
-        <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-          <Link
-            href="/orders"
-            className="bg-black text-white px-6 py-3 rounded-xl font-bold"
-          >
-            View My Orders
-          </Link>
+       <a
+  href={whatsappLink}
+  target="_blank"
+  rel="noreferrer"
+  className="mt-5 block w-full rounded-2xl bg-green-600 px-6 py-4 text-center font-bold text-white hover:bg-green-700"
+>
+  Send Payment Details on WhatsApp
+</a>
 
-          <Link
-            href="/shop"
-            className="border border-gray-300 px-6 py-3 rounded-xl font-bold"
-          >
-            Continue Shopping
-          </Link>
-        </div>
+<div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+  <Link
+    href="/orders"
+    className="bg-black text-white px-6 py-3 rounded-xl font-bold"
+  >
+    View My Orders
+  </Link>
+
+  <Link
+    href="/shop"
+    className="border border-gray-300 px-6 py-3 rounded-xl font-bold"
+  >
+    Continue Shopping
+  </Link>
+</div>
       </div>
     </main>
   );
