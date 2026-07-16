@@ -501,7 +501,7 @@ function isWishlisted(productId: string) {
       email: order.email,
       phone: order.phone,
       address: order.address,
-      payment_method: order.paymentMethod,
+      payment_method: data.paymentMethod,
       items: order.items,
       total: order.total,
       status: order.status,
