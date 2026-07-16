@@ -32,6 +32,13 @@ export default function Footer() {
               <p>Instagram: @solehub</p>
               <p>Email: support@solehub.com</p>
               <p>Phone: +267 75 489 442</p>
+
+              <a
+  href="/delivery"
+  className="block mt-4 text-gray-400 hover:text-white"
+>
+  Delivery Information
+</a>
             </div>
           </div>
         </div>
