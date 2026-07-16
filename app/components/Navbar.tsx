@@ -21,9 +21,9 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 px-6 md:px-12 py-5">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/" className="text-2xl md:text-3xl font-black tracking-tight">
+  <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 px-4 py-3 backdrop-blur sm:px-6 md:px-12 md:py-5">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3">
+        <Link href="/" className="shrink-0 text-lg font-black tracking-tight sm:text-2xl md:text-3xl">
           SOLE <span className="text-sky-500">HUB</span>
         </Link>
 
@@ -31,9 +31,9 @@ export default function Navbar() {
           {links}
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex shrink-0 items-center gap-3 sm:gap-4">
           <Link href="/cart" className="relative">
-            <ShoppingBag size={24} />
+            <ShoppingBag className="h-5 w-5 sm:h-6 sm:w-6" />
             <span className="absolute -top-3 -right-3 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
               {cartCount}
             </span>
