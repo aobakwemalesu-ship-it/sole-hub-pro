@@ -29,8 +29,8 @@ export default function Footer() {
             </p>
 
             <div className="mt-5 space-y-2 text-gray-300">
-              <p>Instagram: @solehub</p>
-              <p>Email: support@solehub.com</p>
+              <p>Instagram: @solehub_store</p>
+              <p>Email: solehubstore@gmail.com</p>
               <p>Phone: +267 75 489 442</p>
 
               <a
