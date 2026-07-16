@@ -7,6 +7,8 @@ import { useSearchParams } from "next/navigation";
 function OrderSuccessContent() {
   const searchParams = useSearchParams();
   const orderId = searchParams.get("orderId");
+  const paymentMethod =
+  searchParams.get("paymentMethod") || "Payment method not selected";
 
   return (
     <main className="min-h-screen bg-gray-50 px-6 py-16">
@@ -23,17 +25,33 @@ function OrderSuccessContent() {
           Thank you for shopping with Sole Hub.
         </p>
 
-        {orderId && (
-          <div className="mt-6 bg-gray-100 rounded-2xl p-4">
-            <p className="text-sm text-gray-500">
-              Order number
-            </p>
+       {orderId && (
+  <div className="mt-6 bg-gray-100 rounded-2xl p-4">
+    <p className="text-sm text-gray-500">
+      Order number
+    </p>
 
-            <p className="font-bold break-all mt-1">
-              {orderId}
-            </p>
-          </div>
-        )}
+    <p className="font-bold break-all mt-1">
+      {orderId}
+    </p>
+  </div>
+)}
+
+<div className="mt-6 rounded-2xl border border-gray-200 bg-gray-50 p-5 text-left">
+  <p className="text-sm text-gray-500">
+    Selected payment method
+  </p>
+
+  <h2 className="mt-1 text-lg font-black">
+    {paymentMethod}
+  </h2>
+
+  <p className="mt-3 text-sm leading-6 text-gray-600">
+    Your order is awaiting payment. Contact Sole Hub on WhatsApp or Instagram to receive
+    the correct payment details, then send your proof of payment together
+    with your order number.
+  </p>
+</div>
 
         <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
           <Link

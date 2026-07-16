@@ -37,7 +37,11 @@ useEffect(() => {
   try {
     const orderId = await placeOrder(form);
 
-  router.push(`/order-success?orderId=${orderId}`);
+  router.push(
+  `/order-success?orderId=${orderId}&paymentMethod=${encodeURIComponent(
+    form.paymentMethod
+  )}`
+);
   } catch (error) {
     alert(
       error instanceof Error
