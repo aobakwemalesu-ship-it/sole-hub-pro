@@ -23,7 +23,7 @@ export default function ProductPage() {
   return (
     <main className="max-w-7xl mx-auto px-8 md:px-12 py-20 grid md:grid-cols-2 gap-12">
       <div>
-        <div className="bg-gray-50 rounded-[36px] p-10 flex items-center justify-center">
+       <div className="rounded-3xl bg-white p-10">
           <img src={product.images[imageIndex]} alt={product.name} className="max-h-[430px] object-contain" />
         </div>
 
