@@ -30,12 +30,26 @@ export default function ShopPage() {
       <h1 className="text-5xl font-black">Shop Sneakers</h1>
       <p className="text-gray-600 mt-3 mb-8">Search, filter and sort your sneaker collection.</p>
 
-      <div className="grid md:grid-cols-3 gap-4 mb-10">
-        <input className="border p-4 rounded-2xl" placeholder="Search products..." value={search} onChange={(e) => setSearch(e.target.value)} />
-        <select className="border p-4 rounded-2xl" value={brand} onChange={(e) => setBrand(e.target.value)}>
+      <div className="mb-10 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
+        <input
+  type="search"
+  className="w-full rounded-2xl border border-gray-300 bg-white p-4 outline-none focus:border-black"
+  placeholder="Search products..."
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+/>
+        <select
+  className="w-full rounded-2xl border border-gray-300 bg-white p-4"
+  value={brand}
+  onChange={(e) => setBrand(e.target.value)}
+>
           {brands.map((item) => <option key={item}>{item}</option>)}
         </select>
-        <select className="border p-4 rounded-2xl" value={sort} onChange={(e) => setSort(e.target.value)}>
+       <select
+  className="w-full rounded-2xl border border-gray-300 bg-white p-4"
+  value={sort}
+  onChange={(e) => setSort(e.target.value)}
+>
           <option>Newest</option>
           <option value="Low">Price: Low to High</option>
           <option value="High">Price: High to Low</option>

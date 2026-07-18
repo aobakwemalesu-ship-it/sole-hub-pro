@@ -1,9 +1,10 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useStore } from "../context/StoreContext";
 import { supabase } from "../lib/supabase";
 import type { Order } from "../lib/types";
+import { useRouter } from "next/navigation";
 
 async function uploadProductImage(file: File): Promise<string> {
   const extension = file.name.split(".").pop() ?? "jpg";
@@ -39,6 +40,7 @@ export default function AdminPage() {
   updateOrderStatus,
   updatePaymentProofReceived,
 } = useStore();
+  const router = useRouter();
   const [tab, setTab] = useState<"products" | "orders">("products");
   const [orderFilter, setOrderFilter] = useState<
   "All" | Order["status"]
@@ -70,16 +72,16 @@ const filteredOrders =
     images: [] as string[]
   });
   const [editingId, setEditingId] = useState<string | null>(null);
-
-  if (user?.role !== "admin") {
-    return (
-      <main className="px-8 md:px-12 py-20 max-w-4xl mx-auto">
-        <h1 className="text-5xl font-black mb-6">Admin Dashboard</h1> 
-        <p className="mb-6">Login as admin to manage products and orders.</p>
-        <a href="/login" className="bg-black text-white px-6 py-3 rounded-2xl font-bold">Login</a>
-      </main>
-    );
+  useEffect(() => {
+  if (!user) {
+    router.replace("/login");
+    return;
   }
+
+  if (user.role !== "admin") {
+    router.replace("/");
+  }
+}, [user, router]);
 
   async function uploadImages(files: FileList | null) {
     if (!files) return;
@@ -136,6 +138,10 @@ if (editingId) {
 
     alert("Product added.");
   }
+
+  if (!user || user.role !== "admin") {
+  return null;
+}
 
   return (
     <main className="px-8 md:px-12 py-12 max-w-7xl mx-auto">
