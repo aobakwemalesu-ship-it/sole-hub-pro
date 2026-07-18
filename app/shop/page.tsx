@@ -3,12 +3,14 @@
 import { useEffect, useMemo, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { useStore } from "../context/StoreContext";
-import { useSearchParams } from "next/navigation";
 
-export default function ShopPage() {
+export default function ShopPage({
+  searchParams,
+}: {
+  searchParams: { brand?: string };
+}) {
   const { products } = useStore();
-  const searchParams = useSearchParams();
-  const brandFromUrl = searchParams.get("brand");
+  const brandFromUrl = searchParams.brand ?? "All";
   const [search, setSearch] = useState("");
   const [brand, setBrand] = useState(
   brandFromUrl || "All"
