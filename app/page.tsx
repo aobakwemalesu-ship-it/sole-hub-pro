@@ -23,7 +23,7 @@ const { products, user } = useStore();
 
       <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-gray-600 sm:text-lg md:mx-0">
         Shop authentic sneakers from Nike, Adidas, New Balance,
-        Puma, Crocs and more—delivered across Botswana.
+        Bikernstock, Crocs and more—delivered across Botswana.
       </p>
 
       <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row md:justify-start">
@@ -83,7 +83,7 @@ const { products, user } = useStore();
     </div>
 
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
-      {["Nike", "Adidas", "New Balance", "Puma", "Crocs"].map((brand) => (
+      {["Nike", "Adidas", "New Balance", "Birkenstock", "Crocs"].map((brand) => (
         <a
           key={brand}
           href={`/shop?brand=${encodeURIComponent(brand)}`}
