@@ -70,6 +70,32 @@ const { products, user } = useStore();
   </div>
 </section>
 
+<section className="px-4 py-12 sm:px-6 md:py-16 lg:px-8">
+  <div className="mx-auto w-full max-w-7xl">
+    <div className="mb-8 text-center">
+      <p className="text-sm font-black uppercase tracking-[0.2em] text-sky-500">
+        Shop by Brand
+      </p>
+
+      <h2 className="mt-2 text-3xl font-black sm:text-4xl">
+        Find Your Favourite Brand
+      </h2>
+    </div>
+
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
+      {["Nike", "Adidas", "New Balance", "Puma", "Crocs"].map((brand) => (
+        <a
+          key={brand}
+          href={`/shop?brand=${encodeURIComponent(brand)}`}
+          className="flex min-h-24 items-center justify-center rounded-2xl border border-gray-200 bg-white px-4 text-center text-lg font-black transition hover:-translate-y-1 hover:border-black hover:shadow-lg"
+        >
+          {brand}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
       <section className="px-8 md:px-12 py-20">
         <div className="max-w-7xl mx-auto flex justify-between items-end mb-10">
           <div>
