@@ -59,7 +59,7 @@ const { products, user } = useStore();
     </div>
 
     <div className="flex justify-center">
-      <div className="relative flex min-h-[300px] w-full items-center justify-center rounded-3xl bg-white p-6 sm:min-h-[420px]">
+      <div className="relative flex min-h-[300px] w-full items-center justify-center rounded-3xl p-6 sm:min-h-[420px]">
         <img
           src="/images/hero-shoe.png"
           alt="Featured Sole Hub sneaker"
