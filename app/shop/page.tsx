@@ -1,14 +1,23 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { useStore } from "../context/StoreContext";
+import { useSearchParams } from "next/navigation";
 
 export default function ShopPage() {
   const { products } = useStore();
+  const searchParams = useSearchParams();
+  const brandFromUrl = searchParams.get("brand");
   const [search, setSearch] = useState("");
-  const [brand, setBrand] = useState("All");
+  const [brand, setBrand] = useState(
+  brandFromUrl || "All"
+);
   const [sort, setSort] = useState("Newest");
+
+  useEffect(() => {
+  setBrand(brandFromUrl || "All");
+}, [brandFromUrl]);
 
   const brands = ["All", ...Array.from(new Set(products.map((p) => p.brand)))];
 
