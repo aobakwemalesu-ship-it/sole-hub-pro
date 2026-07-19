@@ -2,6 +2,7 @@ import { Product } from "./types";
 
 export const starterProducts: Product[] = [
   {
+    
     id: "1",
     name: "Nike Air Max Pulse",
     brand: "Nike",
@@ -14,9 +15,12 @@ export const starterProducts: Product[] = [
     colors: ["Black", "White", "Blue"],
     featured: true,
     stock: 12,
+    rating: 5,
+review_count: 0,
     createdAt: "2026-01-01"
   },
   {
+  
     id: "2",
     name: "Adidas Samba OG",
     brand: "Adidas",
@@ -28,6 +32,8 @@ export const starterProducts: Product[] = [
     colors: ["Black", "Cream", "Brown"],
     featured: true,
     stock: 8,
+    rating: 5,
+review_count: 0,
     createdAt: "2026-01-02"
   },
   {
@@ -42,6 +48,8 @@ export const starterProducts: Product[] = [
     colors: ["White", "Green", "Navy"],
     featured: true,
     stock: 10,
+    rating: 5,
+review_count: 0,
     createdAt: "2026-01-03"
   },
   {
@@ -56,6 +64,8 @@ export const starterProducts: Product[] = [
     colors: ["Black", "Red", "White"],
     featured: false,
     stock: 5,
+    rating: 5,
+review_count: 0,
     createdAt: "2026-01-04"
   }
 ];
