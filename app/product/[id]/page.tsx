@@ -23,17 +23,26 @@ export default function ProductPage() {
   return (
     <main className="max-w-7xl mx-auto px-8 md:px-12 py-20 grid md:grid-cols-2 gap-12">
       <div>
-       <div className="rounded-3xl bg-white p-10">
-          <img src={product.images[imageIndex]} alt={product.name} className="max-h-[430px] object-contain" />
-        </div>
-
-        <div className="flex gap-3 mt-4">
-          {product.images.map((img, index) => (
-            <button key={img + index} onClick={() => setImageIndex(index)} className="border rounded-2xl p-2 w-20 h-20 bg-white">
-              <img src={img} className="w-full h-full object-contain" />
-            </button>
-          ))}
-        </div>
+       <div className="mt-4 flex flex-wrap gap-3">
+  {product.images.map((image, index) => (
+    <button
+      key={image}
+      type="button"
+      onClick={() => setImageIndex(index)}
+      className={`h-20 w-20 overflow-hidden rounded-2xl border bg-white p-2 ${
+        imageIndex === index
+          ? "border-black"
+          : "border-gray-300"
+      }`}
+    >
+      <img
+        src={image}
+        alt={`${product.name} view ${index + 1}`}
+        className="h-full w-full object-contain"
+      />
+    </button>
+  ))}
+</div>
       </div>
 
       <div>
