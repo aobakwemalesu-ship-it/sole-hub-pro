@@ -3,6 +3,8 @@ export type Product = {
   name: string;
   brand: string;
   price: number;
+  rating: number;
+  review_count: number;
   oldPrice?: number;
   category: string;
   description: string;

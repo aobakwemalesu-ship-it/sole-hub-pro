@@ -19,7 +19,17 @@ export default function ShopPage() {
   setBrand(brandFromUrl || "All");
 }, [brandFromUrl]);
 
-  const brands = ["All", ...Array.from(new Set(products.map((p) => p.brand)))];
+  const brands = [
+  "All",
+  "Nike",
+  "Jordan",
+  "Adidas",
+  "New Balance",
+  "ASICS",
+  "Puma",
+  "Converse",
+  "Vans",
+].filter((brand) => brand === "All" || products.some((p) => p.brand === brand));
 
   const filtered = useMemo(() => {
     let result = products.filter((p) => {
@@ -27,9 +37,19 @@ export default function ShopPage() {
       return text.includes(search.toLowerCase()) && (brand === "All" || p.brand === brand);
     });
 
-    if (sort === "Low") result = [...result].sort((a, b) => a.price - b.price);
+    if (sort === "Newest") {
+  result = [...result].sort((a, b) => {
+    const brandCompare = a.brand.localeCompare(b.brand);
+
+    if (brandCompare !== 0) {
+      return brandCompare;
+    }
+
+    return b.createdAt.localeCompare(a.createdAt);
+  });
+}
     if (sort === "High") result = [...result].sort((a, b) => b.price - a.price);
-    if (sort === "Newest") result = [...result].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+    if (sort === "Low") result = [...result].sort((a, b) => a.price - b.price);
 
     return result;
   }, [products, search, brand, sort]);

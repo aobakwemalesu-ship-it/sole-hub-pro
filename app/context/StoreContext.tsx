@@ -137,6 +137,8 @@ if (orderError) {
             colors: product.colors ?? [],
             stock: product.stock,
             featured: product.featured,
+            rating: Number(product.rating ?? 5),
+review_count: Number(product.review_count ?? 0),
             createdAt: product.created_at,
           })
         );
@@ -327,6 +329,8 @@ localStorage.removeItem("solehub_pro_cart");
     colors: data.colors ?? [],
     stock: data.stock,
     featured: data.featured,
+    rating: Number(product.rating ?? 5),
+review_count: Number(product.review_count ?? 0),
     createdAt: data.created_at,
   };
 

@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { useStore } from "../../context/StoreContext";
+import ProductReviews from "../../components/ProductReviews";;
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -48,7 +49,17 @@ export default function ProductPage() {
       <div>
         <p className="text-sky-500 font-black">{product.brand}</p>
         <h1 className="text-5xl font-black mt-2">{product.name}</h1>
-        <p className="text-yellow-400 text-xl my-4">★★★★★</p>
+        <div className="flex items-center gap-2 my-4">
+  <span className="text-yellow-500 text-2xl">⭐</span>
+
+  <span className="text-lg font-bold">
+    {product.rating.toFixed(1)}
+  </span>
+
+  <span className="text-gray-500">
+    ({product.review_count} reviews)
+  </span>
+</div>
 
         <div className="flex items-center gap-3 mb-6">
           <p className="text-3xl font-black text-blue-600">P{product.price.toLocaleString()}</p>
@@ -90,6 +101,9 @@ export default function ProductPage() {
           Add to Cart
         </button>
       </div>
+
+      <ProductReviews productId={product.id} />
+    
     </main>
   );
 }

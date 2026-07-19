@@ -113,6 +113,8 @@ const filteredOrders =
     .filter(Boolean),
   stock: Number(form.stock),
   featured: form.featured,
+  rating: 5,
+review_count: 0,
 };
 
 if (editingId) {
@@ -126,11 +128,11 @@ if (editingId) {
       brand: "",
       price: "",
       oldPrice: "",
-      category: "Lifestyle",
+      category: "Sneakers",
       description: "",
       sizes: "UK 6, UK 7, UK 8, UK 9, UK 10",
       colors: "Black, White",
-      stock: "10",
+      stock: "in stock",
       featured: false,
       images: []
     });

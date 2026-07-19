@@ -110,7 +110,16 @@ const [showLoginPopup, setShowLoginPopup] = useState(false);
         <Link href={`/product/${product.id}`} className="text-xl font-black block mt-1">
           {product.name}
         </Link>
-        <p className="text-yellow-400 mt-2">★★★★★</p>
+        <div className="mt-2 flex items-center gap-2">
+          
+  <span className="text-yellow-500">⭐</span>
+  <span className="text-sm font-semibold">
+    {product.rating.toFixed(1)}
+  </span>
+  <span className="text-sm text-gray-500">
+    ({product.review_count} reviews)
+  </span>
+</div>
 
         <div className="flex items-center gap-2 mt-2">
           <p className="text-xl font-black text-blue-600">P{product.price.toLocaleString()}</p>
