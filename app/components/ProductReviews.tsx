@@ -108,15 +108,18 @@ async function submitReview() {
         </h3>
 
         <textarea
-          placeholder="Share your experience..."
-          className="w-full rounded-xl border p-4 h-36"
-        />
+  placeholder="Share your experience..."
+  className="w-full rounded-xl border p-4 h-36"
+  value={comment}
+  onChange={(e) => setComment(e.target.value)}
+/>
 
         <button
-          className="mt-4 rounded-xl bg-black text-white px-8 py-3 hover:bg-sky-500 transition"
-        >
-          Submit Review
-        </button>
+  onClick={submitReview}
+  className="mt-4 rounded-xl bg-black text-white px-8 py-3 hover:bg-sky-500 transition"
+>
+  Submit Review
+</button>
       </div>
     </section>
   );
