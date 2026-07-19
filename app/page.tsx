@@ -63,7 +63,7 @@ const { products, user } = useStore();
         <img
           src="/images/hero-shoe.png"
           alt="Featured Sole Hub sneaker"
-          className="max-h-[420px] w-full max-w-[650px] object-contain drop-shadow-2xl"
+          className="max-h-[750px] w-full max-w-[1050px] object-contain drop-shadow-2xl"
         />
       </div>
     </div>
