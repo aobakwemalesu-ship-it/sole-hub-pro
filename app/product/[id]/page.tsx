@@ -44,6 +44,14 @@ export default function ProductPage() {
     </button>
   ))}
 </div>
+
+<div className="mt-6 rounded-3xl border bg-white p-8">
+  <img
+    src={product.images[imageIndex]}
+    alt={product.name}
+    className="w-full h-[500px] object-contain"
+  />
+</div>
       </div>
 
       <div>
