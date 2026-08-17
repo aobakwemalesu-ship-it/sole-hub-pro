@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useStore } from "../context/StoreContext";
 
 export default function Navbar() {
-  const { cartCount, user, logout } = useStore();
+  const { cartCount, user, logout, storeLoaded } = useStore();
   const [open, setOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
 
@@ -39,7 +39,9 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {user ? (
+         {!storeLoaded ? (
+  <div className="hidden md:block w-[72px] h-10" />
+) : user ? (
   <div className="relative hidden md:block">
     <button
       type="button"
