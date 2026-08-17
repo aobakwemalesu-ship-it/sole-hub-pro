@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { StoreProvider } from "./context/StoreContext";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Sole Hub Pro",
@@ -18,6 +19,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <Footer />
         </StoreProvider>
+        <Toaster
+  position="top-right"
+  richColors
+  closeButton
+/>
       </body>
     </html>
   );

@@ -1,9 +1,10 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useStore } from "../../context/StoreContext";
 import ProductReviews from "../../components/ProductReviews";;
+import { supabase } from "../../lib/supabase";
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -14,12 +15,47 @@ export default function ProductPage() {
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
 
+
+  if (products.length === 0) {
+  return (
+    <main className="flex min-h-screen items-center justify-center">
+      <p className="text-lg text-gray-500">Loading product...</p>
+    </main>
+  );
+}
+
   if (!product) {
     return <main className="p-12"><h1 className="text-4xl font-black">Product not found</h1></main>;
   }
 
   const selectedSize = size || product.sizes[0] || "UK 8";
   const selectedColor = color || product.colors[0] || "Default";
+
+  const [averageRating, setAverageRating] = useState(0);
+const [reviewCount, setReviewCount] = useState(0);
+
+useEffect(() => {
+  async function loadReviewStats() {
+    const { data, error } = await supabase
+      .from("reviews")
+      .select("rating")
+      .eq("product_id", product.id);
+
+    if (error || !data) return;
+
+    setReviewCount(data.length);
+
+    if (data.length === 0) {
+      setAverageRating(0);
+      return;
+    }
+
+    const total = data.reduce((sum, review) => sum + review.rating, 0);
+    setAverageRating(total / data.length);
+  }
+
+  loadReviewStats();
+}, [product.id]);
 
   return (
     <main className="max-w-7xl mx-auto px-8 md:px-12 py-20 grid md:grid-cols-2 gap-12">
@@ -61,11 +97,11 @@ export default function ProductPage() {
   <span className="text-yellow-500 text-2xl">⭐</span>
 
   <span className="text-lg font-bold">
-    {product.rating.toFixed(1)}
+   {averageRating.toFixed(1)}
   </span>
 
   <span className="text-gray-500">
-    ({product.review_count} reviews)
+    ({reviewCount} reviews)
   </span>
 </div>
 

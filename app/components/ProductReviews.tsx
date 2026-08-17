@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
+import { toast } from "sonner";
 
 type Props = {
   productId: string;
@@ -22,6 +23,8 @@ export default function ProductReviews({ productId }: Props) {
       .select("*")
       .eq("product_id", productId)
       .order("created_at", { ascending: false });
+
+      console.log("Reviews:", data);
 
     if (!error && data) {
       setReviews(data);
@@ -44,7 +47,7 @@ async function submitReview() {
   } = await supabase.auth.getUser();
 
   if (!user) {
-    alert("Please log in to leave a review.");
+    toast.error("Please log in to leave a review.");
     return;
   }
 
@@ -56,11 +59,11 @@ async function submitReview() {
   });
 
   if (error) {
-    alert(error.message);
+    toast.error(error.message);
     return;
   }
 
-  alert("Review submitted!");
+  toast.success("Review submitted successfully!");
 
   setComment("");
 
@@ -103,11 +106,25 @@ async function submitReview() {
       </div>
 
       <div className="mt-12 rounded-2xl border p-8">
-        <h3 className="text-2xl font-bold mb-4">
-          Write a Review
-        </h3>
+       
+       <h3 className="text-2xl font-bold mb-4">
+  Write a Review
+</h3>
 
-        <textarea
+<div className="flex items-center gap-2 mb-4">
+  {[1, 2, 3, 4, 5].map((star) => (
+    <button
+      key={star}
+      type="button"
+      onClick={() => setRating(star)}
+      className="text-3xl transition hover:scale-110"
+    >
+    {star <= rating ? "★" : "☆"}
+    </button>
+  ))}
+</div>
+
+<textarea
   placeholder="Share your experience..."
   className="w-full rounded-xl border p-4 h-36"
   value={comment}
